@@ -1,18 +1,18 @@
-name: general
-
 on: [push, pull_request]
+
+name: General
 
 jobs:
   check:
     name: Check
     runs-on: ubuntu-latest
-    steps: 
-      - uses: actions/checkout@v3
+    steps:
+      - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
-      with: 
-        profile: minimal
-        toolchain: stable
-        override: true
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
       - uses: actions-rs/cargo@v1
         with:
           command: check
@@ -21,21 +21,21 @@ jobs:
     name: Test Suite
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
-        with: 
+        with:
           profile: minimal
           toolchain: stable
           override: true
       - uses: actions-rs/cargo@v1
-        with: 
+        with:
           command: test
 
   fmt:
     name: Rust Format
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
           profile: minimal
@@ -51,7 +51,7 @@ jobs:
     name: Clippy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
           profile: minimal
